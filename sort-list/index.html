@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort List</title>
+    <style>
+        #list-container {
+            display: flex;
+        }
+        
+        #list-container div {
+            margin: 0 20px;
+        }
+        
+        ul {
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Sorting a list using JS</h4>
+    <label for="list-input">Type something to add to the list & Press Enter Key: <input type="text" id="list-input"></label><br> <label for="sort-btn">Click this button to sort the list <input value="Sort" type="button" id="sort-btn"></label>
+    <div id="list-container">
+        <div>
+            <h4>Unrdered List</h4>
+            <div id="unordered-list">
+            </div>
+        </div>
+        <div>
+            <h4>Ordered List</h4>
+            <div id="ordered-list"></div>
+        </div>
+
+    </div>
+    <script>
+        var input = document.getElementById("list-input");
+        var sortBtn = document.getElementById("sort-btn");
+        var orderedList = document.getElementById("ordered-list");
+        var unorderedList = document.getElementById("unordered-list");
+        var list = [];
+        var sortedList = [];
+
+        function addToList() {
+            list.push(input.value);
+            input.value = '';
+        }
+
+        function sortList() {
+            for (let i = 0; i < list.length; i++) {
+                sortedList.push(list[i]);
+            }
+            for (let i = 0; i < sortedList.length; i++) {
+                for (let j = 0; j < sortedList.length; j++) {
+                    if (sortedList[i] < sortedList[j]) {
+                        var temp = sortedList[i];
+                        sortedList[i] = sortedList[j];
+                        sortedList[j] = temp;
+                    }
+                }
+            }
+        }
+
+        function displayLists() {
+            var result = '<ul>';
+            var sortedResult = '<ul>';
+            for (let i = 0; i < list.length; i++) {
+                result += '<li>' + list[i] + '</li>';
+
+            }
+            for (let i = 0; i < sortedList.length; i++) {
+                sortedResult += '<li>' + sortedList[i] + '</li>';
+            }
+            result += '</ul>';
+            sortedResult += '</ul>';
+            orderedList.innerHTML = sortedResult;
+            unorderedList.innerHTML = result;
+        }
+
+        sortBtn.addEventListener("click", () => {
+            sortList(list);
+            displayLists();
+        });
+        input.addEventListener("keydown", (e) => {
+            if (e.keyCode == 13) {
+                addToList();
+                displayLists();
+            }
+        });
+    </script>
+</body>
+
+</html>
