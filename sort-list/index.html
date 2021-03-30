@@ -15,27 +15,46 @@
             margin: 0 20px;
         }
         
-        ul {
-            padding: 0;
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        input:focus {
+            outline: unset
+        }
+        
+        #sort-btn {
+            padding: 7px 70px;
+            border-radius: 14px;
+            margin-top: 7px;
+        }
+        
+        #list-input {
+            border-radius: 7px;
+            margin-top: 7px;
+            padding: 9px;
         }
     </style>
 </head>
 
 <body>
-    <h4>Sorting a list using JS</h4>
-    <label for="list-input">Type something to add to the list & Press Enter Key: <input type="text" id="list-input"></label><br> <label for="sort-btn">Click this button to sort the list <input value="Sort" type="button" id="sort-btn"></label>
-    <div id="list-container">
-        <div>
-            <h4>Unrdered List</h4>
-            <div id="unordered-list">
+    <main>
+        <h4>Sorting a list using JS</h4>
+        <label for="list-input">Type something to add to the list & Press Enter Key: </label><input type="text" id="list-input"><br> <label for="sort-btn">Click this button to sort the list </label><input value="Sort" type="button" id="sort-btn">
+        <div id="list-container">
+            <div>
+                <h4>Unrdered List</h4>
+                <div id="unordered-list">
+                </div>
+            </div>
+            <div>
+                <h4>Ordered List</h4>
+                <div id="ordered-list"></div>
             </div>
         </div>
-        <div>
-            <h4>Ordered List</h4>
-            <div id="ordered-list"></div>
-        </div>
-
-    </div>
+    </main>
     <script>
         var input = document.getElementById("list-input");
         var sortBtn = document.getElementById("sort-btn");
